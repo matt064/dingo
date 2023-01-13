@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+   <meta charset="UTF-8">
+   <title>{% block title %}Title{% endblock %}</title>
+</head>
+<body>
+<div id="content">
+    <div id="header">
+    To jest czesc stała szablonu glownego
+    </div>
+    {% if messages %}
+    <ul class="messages">
+        {% for message in messages %}
+            <li{% if message.tags %} class="{{ message.tags }}"{% endif %}>{{ message }}</li>
+        {% endfor %}
+    </ul>
+    {% endif %}
+    <div id="inner-content">
+    
+    {% block content %}
+        to jest blok, ktory mozemy nadpisac w innych szablonach
+    {% endblock %}
+    </div>
+</div>
+</body>
+</html>
