@@ -21,4 +21,4 @@ class Author(models.Model):
     biogram = models.TextField(null = True, blank = True)
 
     def __str__(self):
-        return f"id:{self.id}, nick:{self.nick}"
+        return f"{self.nick}"
