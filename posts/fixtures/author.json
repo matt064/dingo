@@ -1,0 +1,56 @@
+[
+{
+    "model": "posts.author",
+    "pk": 1,
+    "fields": {
+        "nick": "biggi",
+        "email": "biggi@gmail.com",
+        "biogram": null
+    }
+},
+{
+    "model": "posts.author",
+    "pk": 2,
+    "fields": {
+        "nick": "rooney12",
+        "email": "matiii@o2.pl",
+        "biogram": null
+    }
+},
+{
+    "model": "posts.author",
+    "pk": 3,
+    "fields": {
+        "nick": "gruby",
+        "email": "pirat@wp.pl",
+        "biogram": ""
+    }
+},
+{
+    "model": "posts.author",
+    "pk": 4,
+    "fields": {
+        "nick": "robert33",
+        "email": "rojbert@wp.pl",
+        "biogram": ""
+    }
+},
+{
+    "model": "posts.author",
+    "pk": 5,
+    "fields": {
+        "nick": "chudy202",
+        "email": "chudy.2@fb.pl",
+        "biogram": ""
+    }
+},
+{
+    "model": "posts.author",
+    "pk": 6,
+    "fields": {
+        "nick": "gargamel",
+        "email": "smerfy.22@o.pl",
+        "biogram": ""
+    }
+}
+]

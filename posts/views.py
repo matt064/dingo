@@ -11,10 +11,7 @@ def posts_list(request):
         form = PostForm(data=request.POST)
 
         if form.is_valid():
-            author = Author.objects.get(pk=int(form.cleaned_data['author']))
-            data = form.cleaned_data.copy()
-            data['author'] = author
-            Post.objects.create(**data)
+            form.save()
             messages.add_message(
                 request,
                 messages.SUCCESS,
@@ -51,8 +48,7 @@ def authors_list(request):
         form = AuthorForm(data=request.POST)
 
         if form.is_valid():
-            data = form.cleaned_data
-            Author.objects.create(**data)
+            form.save()
             messages.add_message(
                 request,
                 messages.SUCCESS,

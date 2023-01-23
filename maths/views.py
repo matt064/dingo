@@ -52,16 +52,16 @@ def mul(request,a,b):
 
 def div(request,a,b):
     a, b = int(a), int(b)
-    c = {"a": a, "b": b, "operacja": "/", "wynik": wynik, "title": "dzielenie"}
     if b == 0:
         wynik = "Error"
         messages.add_message(request, messages.ERROR, "Dzielenie przez zero!")
         result = Result.objects.get_or_create(error=wynik)[0]
         Math.objects.create(operation='div', a=a, b=b, result=result)
     else:
-        wynik = a / int(b)
+        wynik = a / b
         result = Result.objects.get_or_create(error=wynik)[0]
         Math.objects.create(operation='div', a=a, b=b, result=result)
+    c = {"a": a, "b": b, "operacja": "/", "wynik": wynik, "title": "dzielenie", "result": result}
     return render(
         request=request,
         template_name="maths/operation.html",
@@ -93,7 +93,7 @@ def results_list(request):
         if form.is_valid():
             if form.cleaned_data['error'] == '':
                 form.cleaned_data['error'] = None
-            Result.objects.get_or_create(form.cleaned_data)
+            form.save()
             messages.add_message(
                 request,
                 messages.SUCCESS,

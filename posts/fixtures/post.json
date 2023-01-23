@@ -1,0 +1,79 @@
+[
+{
+    "model": "posts.post",
+    "pk": 1,
+    "fields": {
+        "title": "wawa",
+        "content": "warszawa to stolica Polski",
+        "created": "2023-01-13T12:10:02.886Z",
+        "modified": "2023-01-13T12:14:32.536Z",
+        "author": 1
+    }
+},
+{
+    "model": "posts.post",
+    "pk": 2,
+    "fields": {
+        "title": "zima",
+        "content": "zimy nie ma!",
+        "created": "2023-01-13T12:10:53.227Z",
+        "modified": "2023-01-13T12:15:04.816Z",
+        "author": 2
+    }
+},
+{
+    "model": "posts.post",
+    "pk": 3,
+    "fields": {
+        "title": "messi",
+        "content": "G.O.A.T",
+        "created": "2023-01-13T12:13:03.805Z",
+        "modified": "2023-01-13T12:15:23.756Z",
+        "author": 2
+    }
+},
+{
+    "model": "posts.post",
+    "pk": 4,
+    "fields": {
+        "title": "foki",
+        "content": "Fokarium Stacji Morskiej Instytutu Oceanografii Uniwersytetu Gdañskiego",
+        "created": "2023-01-17T11:22:35.186Z",
+        "modified": "2023-01-17T11:22:35.186Z",
+        "author": 3
+    }
+},
+{
+    "model": "posts.post",
+    "pk": 5,
+    "fields": {
+        "title": "mundial",
+        "content": "zdobywca pucharu swiata zostala argentyna",
+        "created": "2023-01-17T11:26:02.619Z",
+        "modified": "2023-01-17T11:26:02.619Z",
+        "author": 4
+    }
+},
+{
+    "model": "posts.post",
+    "pk": 6,
+    "fields": {
+        "title": "samoloty",
+        "content": "f-16",
+        "created": "2023-01-19T11:17:36.684Z",
+        "modified": "2023-01-19T11:17:36.685Z",
+        "author": 2
+    }
+},
+{
+    "model": "posts.post",
+    "pk": 7,
+    "fields": {
+        "title": "test",
+        "content": "test",
+        "created": "2023-01-19T12:29:41.267Z",
+        "modified": "2023-01-19T12:29:41.267Z",
+        "author": 1
+    }
+}
+]
