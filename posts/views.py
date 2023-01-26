@@ -1,6 +1,7 @@
 from django.shortcuts import render
 from django.http import HttpResponse
 from django.contrib import messages
+from django.core.paginator import Paginator
 
 from posts.models import Post, Author
 from posts.forms import PostForm, AuthorForm
@@ -26,6 +27,9 @@ def posts_list(request):
 
     form = PostForm()
     posts = Post.objects.all()
+    pagi = Paginator(posts, 4)
+    page_number = request.GET.get('page')
+    posts = pagi.get_page(page_number)
     return render(
         request=request,
         template_name="posts/p_list.html",

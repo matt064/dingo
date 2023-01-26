@@ -1,0 +1,17 @@
+{% extends "maths/main.html" %}
+
+{% load static %}
+
+{% block title %}About{% endblock %}
+
+{% block content %}
+
+<h2> O Mnie </h2>
+<br />
+<img src="{% static 'maths/img/Son_Goku.jpg' %}" title="Goku" width="150px" heigth="150px">
+<br />
+<br />
+<p><b>imie</b>: {{imie}}</p>
+<p><b>nazwisko</b>: {{nazwisko}}</p>
+
+{% endblock %}

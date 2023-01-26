@@ -1,12 +1,10 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-   <meta charset="UTF-8">
-   <title>{% block title %} {% endblock %}</title>
-</head>
-<body>
-<div id="content">
-    {% if messages %}
+{% extends "maths/main.html" %}
+
+{% block title %} {% endblock %}
+    
+{% block content %}
+
+{% if messages %}
     <ul class="messages">
         {% for message in messages %}
             <li{% if message.tags %} class="{{ message.tags }}"{% endif %}>{{ message }}</li>
@@ -15,10 +13,10 @@
     {% endif %}
     <div id="inner-content">
     
-    {% block content %}
+    {% block app %}
 
     {% endblock %}
     </div>
 </div>
-</body>
-</html>
+
+{% endblock %}

@@ -1,0 +1,35 @@
+{% extends "maths/main.html" %}
+
+{% block title %}Maths search{% endblock %}
+
+{% block content %}
+    <br />
+    <form action="">
+        <input type="text" name="q" placeholder="szukaj"/>
+        <input type="submit" />
+    </form>
+    {% if maths %}
+    <ul>
+        {% for m in maths %}
+            <li><a href="{% url 'maths:details' m.id %}">{{ m }}</a></li>
+        {% endfor %}
+    </ul>
+    <div class="pagination">
+    <span class="step-links">
+        {% if maths.has_previous %} 
+            <a href="?page=1">first</a>
+            <a href="?page={{ maths.previous_page_number }}">previous</a>
+        {% endif %}
+
+        <span class="current">
+            Page {{ maths.number }} of {{ maths.paginator.num_pages }} .
+        </span>
+
+        {% if maths.has_next %} 
+            <a href="?page={{ maths.next_page_number }}">next</a>
+            <a href="?page={{ maths.paginator.num_pages }}">last</a>
+        {% endif %}
+    </span>
+    </div>
+    {% endif %}
+{% endblock %}

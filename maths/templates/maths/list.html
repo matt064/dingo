@@ -3,9 +3,51 @@
 {% block title %}Maths list{% endblock %}
 
 {% block content %}
-   <ul>
-       {% for m in maths %}
-           <li><a href="{% url 'maths:details' m.id %}">{{ m }}</a></li>
-       {% endfor %}
-   </ul>
+<div class="container justify-content-md-center">
+    <form action="/maths/search/">
+        <label for="q" class="col-form-label"><b>Operacja: </b></label>
+        <input type="text" name="q" placeholder="szukaj"/>
+        <input type="submit" />
+    </form>
+    <br/>
+    <table class="table table-sm table-striped table-hover">
+        <thead>
+            <tr>
+                <th scope="col">Id</th>
+                <th scope="col">a</th>
+                <th scope="col">b</th>
+                <th scope="col">operation</th>
+                <th scope="col">result</th>
+            </tr>
+        </thead>
+        <tbody>
+            {% for m in maths %}
+            <tr>
+                <th><a href="{% url 'maths:details' m.id %}">{{m.id}}</a></th>       
+                <td>{{m.a}}</td>
+                <td>{{m.b}}</td>
+                <td>{{m.operation}}</td>
+                <td>{{m.result}}</td>
+            </tr>
+            {% endfor %}
+        </tbody>
+    </table>
+    <div class="pagination">
+    <span class="step-links">
+        {% if maths.has_previous %} 
+            <a class="btn btn-primary btn-sm" href="?page=1">first</a>
+            <a class="btn btn-primary btn-sm" href="?page={{ maths.previous_page_number }}">previous</a>
+        {% endif %}
+
+        <span class="current">
+            Page {{ maths.number }} of {{ maths.paginator.num_pages }} .
+        </span>
+
+        {% if maths.has_next %} 
+            <a class="btn btn-primary btn-sm" href="?page={{ maths.next_page_number }}">next</a>
+            <a class="btn btn-primary btn-sm" href="?page={{ maths.paginator.num_pages }}">last</a>
+        {% endif %}
+    </span>
+    </div>
+</div>
 {% endblock %}

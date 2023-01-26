@@ -2,6 +2,7 @@ from django.shortcuts import render
 from django.http import HttpResponse
 from django.template import loader
 from django.contrib import messages
+from django.core.paginator import Paginator
 
 from maths.models import Math, Result
 from maths.forms import ResultForm
@@ -71,6 +72,9 @@ def div(request,a,b):
 
 def maths_list(request):
     maths = Math.objects.all()
+    paginator = Paginator(maths, 5)
+    page_number = request.GET.get('page')
+    maths = paginator.get_page(page_number)
     return render(
         request=request,
         template_name="maths/list.html",
@@ -114,4 +118,17 @@ def results_list(request):
             'results':results,
             'form': form,
         }
+    )
+ 
+
+def search(request):
+    """wyszukuje rekordy po rodzaju operacji"""
+    query_dict = request.GET
+    operation = query_dict.get('q')
+    maths = Math.objects.filter(operation=operation)
+    c = {"maths": maths}
+    return render (
+        request=request,
+        template_name='maths/search.html',
+        context=c
     )

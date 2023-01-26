@@ -2,6 +2,8 @@ from django.test import TestCase, Client
 from maths.models import Math, Result
 from django.urls import reverse
 
+
+
 class MathViewsTest(TestCase):
 
     def setUp(self):
@@ -75,3 +77,21 @@ class MathViewsTest(TestCase):
         self.assertTemplateUsed(response, 'maths/results.html')        
 
 
+class MathViewsPaginationTest(TestCase):
+    fixtures = ['math', 'result']
+
+
+    def setUp(self):
+        self.client = Client()
+
+
+    def test_get_first_5(self):
+        response = self.client.get('/maths/histories/')
+        self.assertEqual(response.status_code, 200)
+        self.assertEqual(len(response.context["maths"]), 5)
+
+    
+    def test_get_last_page(self):
+        response = self.client.get('/maths/histories/?page=3')
+        self.assertEqual(response.status_code, 200)
+        self.assertEqual(len(response.context['maths']), 1)

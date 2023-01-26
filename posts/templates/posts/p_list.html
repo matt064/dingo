@@ -1,18 +1,55 @@
-{% extends "posts/base.html" %}
+{% extends "posts/app_base.html" %}
 
 {% block title %}Posts list{% endblock %}
 
-{% block content %}
+{% block app %}
+<div class="row justify-content-md-center">
+<div class="col-4 ">
+<table class="table table-sm table-striped table-hover">
 
-   <ul>
-       {% for p in posts %}
-           <li><a href="{% url 'posts:p_details' p.id %}">{{ p }}</a></li>
-       {% endfor %}
-   </ul>
+    <thead>
+      <tr>
+        <th scope="col">Id</th>
+        <th scope="col">Title</th>
+        <th scope="col">Author</th>
+      </tr>
+    </thead>
+    <tbody>
+        {% for p in posts %}
+        <tr>
+            <th >{{p.id}}</th>            
+            <td><a href="{% url 'posts:p_details' p.id %}">{{p.title}}</a></td>
+            <td>{{p.author}}</td>
+        </tr>
+        {% endfor %}
+    </tbody>
+</table>
 
-   <form method="post">
-    {% csrf_token %}
-    {{ form.as_p }}
-    <input type="submit" value="zapisz">
+    <div class="pagination">
+        <span class="step-links">
+            {% if posts.has_previous %} 
+                <a class="btn btn-primary btn-sm" href="?page={{ posts.previous_page_number }}">previous</a>
+            {% endif %}
+
+            <span class="current">
+                Page {{ posts.number }} of {{ posts.paginator.num_pages }} .
+            </span>
+
+            {% if posts.has_next %} 
+                <a class="btn btn-primary btn-sm" href="?page={{ posts.next_page_number }}">next</a>
+            {% endif %}
+        </span>
+    </div>
+</div>
+<div class="col-4">
+    <div class="form-group">
+        <form method="post">
+        {% csrf_token %}
+        {{ form.as_p }}
+        <input class="btn btn-primary" type="submit" value="zapisz">
     </form>
+    </div>
+</div>
+</div>
+
 {% endblock %}
